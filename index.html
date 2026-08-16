@@ -44,7 +44,6 @@
     overflow: hidden;
   }
 
-
   /* Ambient glow */
 
   body::before {
@@ -74,22 +73,19 @@
     }
   }
 
-
   /* Subtle texture */
 
   body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background-image:
-      radial-gradient(
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px
-      );
+    background-image: radial-gradient(
+      rgba(255,255,255,0.015) 1px,
+      transparent 1px
+    );
     background-size: 3px 3px;
     pointer-events: none;
   }
-
 
   /* Main content */
 
@@ -101,7 +97,6 @@
     flex-direction: column;
     align-items: center;
   }
-
 
   /* Status */
 
@@ -117,7 +112,6 @@
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 40px;
-
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.1s;
   }
@@ -132,7 +126,6 @@
   }
 
   @keyframes pulse {
-
     0% {
       box-shadow: 0 0 0 0 rgba(176,141,87,0.5);
     }
@@ -144,17 +137,14 @@
     100% {
       box-shadow: 0 0 0 0 rgba(176,141,87,0);
     }
-
   }
 
-
-  /* Logo */
+  /* Wordmark */
 
   .wordmark-row {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.25s;
   }
@@ -171,24 +161,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 46px;
     height: 46px;
-
     border-radius: 50%;
     border: 1px solid var(--brass-dim);
-
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-size: 22px;
-
     color: var(--brass);
     font-weight: 400;
-
     margin-top: 6px;
     flex-shrink: 0;
   }
-
 
   /* Tagline */
 
@@ -196,32 +180,22 @@
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 300;
-
     font-size: clamp(20px, 3.2vw, 28px);
-
     color: var(--muted);
-
     margin-bottom: 14px;
-
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
-
-  /* Main text */
+  /* Main copy */
 
   .thesis {
     font-size: 16.5px;
     line-height: 1.8;
-
     color: var(--muted);
-
     font-weight: 300;
-
     max-width: 520px;
-
     margin-bottom: 48px;
-
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.55s;
   }
@@ -231,49 +205,35 @@
     font-weight: 500;
   }
 
-
   /* Form */
 
   form {
     width: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.7s;
   }
 
   .form-row {
     display: flex;
-
     width: 100%;
     max-width: 440px;
-
     border-bottom: 1px solid var(--hairline);
-
     transition: border-color 0.4s ease;
-
     position: relative;
   }
 
   .form-row::after {
     content: "";
-
     position: absolute;
-
     bottom: -1px;
     left: 50%;
-
     width: 0%;
     height: 1px;
-
     background: var(--brass);
-
-    transition:
-      width 0.5s ease,
-      left 0.5s ease;
+    transition: width 0.5s ease, left 0.5s ease;
   }
 
   .form-row:focus-within::after {
@@ -285,25 +245,17 @@
     border-color: transparent;
   }
 
-
-  /* Email field */
+  /* Email input */
 
   input[type="email"] {
     flex: 1;
-
     background: transparent;
-
     border: none;
     outline: none;
-
     font-family: 'Inter', sans-serif;
-
     font-size: 15px;
-
     color: var(--ivory);
-
     padding: 14px 8px;
-
     text-align: center;
   }
 
@@ -311,31 +263,19 @@
     color: var(--muted-dim);
   }
 
-
-  /* Submit */
+  /* Submit button */
 
   .submit-btn {
     background: none;
-
     border: none;
-
     color: var(--brass);
-
     font-size: 13px;
-
     letter-spacing: 0.06em;
-
     font-weight: 500;
-
     padding: 14px 6px;
-
     cursor: pointer;
-
     white-space: nowrap;
-
-    transition:
-      color 0.25s ease,
-      transform 0.2s ease;
+    transition: color 0.25s ease, transform 0.2s ease;
   }
 
   .submit-btn:hover {
@@ -343,92 +283,45 @@
     transform: translateX(2px);
   }
 
-
-  /* Hint */
+  /* Form hint */
 
   .form-hint {
     margin-top: 18px;
-
     font-size: 11.5px;
-
     letter-spacing: 0.03em;
-
     color: var(--muted-dim);
   }
-
-
-  /* Success message */
-
-  .success-msg {
-    display: none;
-
-    font-family: 'Fraunces', serif;
-
-    font-style: italic;
-
-    font-size: 17px;
-
-    color: var(--brass-bright);
-
-    margin-top: 8px;
-
-    padding: 18px 0;
-  }
-
-  .success-msg.show {
-    display: block;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
 
   /* Categories */
 
   .verticals-row {
     display: flex;
-
     flex-wrap: wrap;
-
     justify-content: center;
-
     gap: 10px;
-
     margin-top: 54px;
-
     opacity: 0;
-
     animation: fadeUp 0.8s ease forwards 0.85s;
   }
 
   .v-tag {
     font-size: 11px;
-
     letter-spacing: 0.04em;
-
     color: var(--muted-dim);
-
     border: 1px solid var(--hairline);
-
     padding: 7px 16px;
-
     border-radius: 100px;
   }
-
 
   /* Footer */
 
   footer {
     position: relative;
-
     z-index: 2;
-
     margin-top: 60px;
-
     font-size: 10.5px;
-
     letter-spacing: 0.08em;
-
     color: var(--muted);
-
     opacity: 0.5;
   }
 
@@ -437,11 +330,9 @@
     margin: 0 8px;
   }
 
-
-  /* Animations */
+  /* Animation */
 
   @keyframes fadeUp {
-
     from {
       opacity: 0;
       transform: translateY(14px);
@@ -451,9 +342,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-
   }
-
 
   /* Mobile */
 
@@ -473,14 +362,11 @@
     .submit-btn {
       align-self: center;
     }
-
   }
-
 
   /* Reduced motion */
 
   @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -488,64 +374,47 @@
       opacity: 1 !important;
       transform: none !important;
     }
-
   }
 
 </style>
 </head>
 
-
 <body>
 
-
   <div class="content">
-
 
     <div class="status-pill">
       <span class="pulse-dot"></span>
       In the making
     </div>
 
-
     <div class="wordmark-row">
-
-      <div class="wordmark">
-        Tailyr
-      </div>
-
-      <div class="beta-badge">
-        β
-      </div>
-
+      <div class="wordmark">Tailyr</div>
+      <div class="beta-badge">β</div>
     </div>
-
 
     <div class="tagline">
       Your needs, answered
     </div>
 
-
     <p class="thesis">
-
       One voice for everything worth owning —
-      <strong>
-        cars, watches, yachts, fine wine, travel.
-      </strong>
-
-      No browsing. No forms.
-
-      Just tell us what you're after, and we'll find who has it.
-
+      <strong>cars, watches, yachts, fine wine, travel.</strong>
+      No browsing. No forms. Just tell us what you're after, and we'll find who has it.
       We're building it properly, and we'd love for you to be among the first through the door.
-
     </p>
 
 
+    <!--
+      FORM
 
-    <!-- WAITLIST FORM -->
+      This version deliberately uses NO JavaScript.
+
+      The browser submits directly to Formspree using
+      a standard HTML POST request.
+    -->
 
     <form
-      id="waitlist-form"
       action="https://formspree.io/f/mgawljnr"
       method="POST"
     >
@@ -554,7 +423,6 @@
 
         <input
           type="email"
-          id="email-input"
           name="email"
           placeholder="you@example.com"
           required
@@ -570,7 +438,6 @@
 
       </div>
 
-
       <div class="form-hint">
         No spam. One email when we open the door.
       </div>
@@ -578,185 +445,24 @@
     </form>
 
 
-    <!--
-      IMPORTANT:
-      This must remain OUTSIDE the form.
-
-      The JavaScript hides the form after Formspree
-      confirms a successful submission. If this element
-      were inside the form, it would be hidden too.
-    -->
-
-    <div
-      class="success-msg"
-      id="success-msg"
-    >
-      You're on the list. We'll be in touch soon.
-    </div>
-
-
-
     <div class="verticals-row">
-
-      <div class="v-tag">
-        Cars
-      </div>
-
-      <div class="v-tag">
-        Watches
-      </div>
-
-      <div class="v-tag">
-        Yachts
-      </div>
-
-      <div class="v-tag">
-        Fine Wine
-      </div>
-
-      <div class="v-tag">
-        Travel
-      </div>
-
+      <div class="v-tag">Cars</div>
+      <div class="v-tag">Watches</div>
+      <div class="v-tag">Yachts</div>
+      <div class="v-tag">Fine Wine</div>
+      <div class="v-tag">Travel</div>
     </div>
-
 
   </div>
 
 
-
   <footer>
-
     PRIVATE BY DESIGN
-
     <span class="dot">•</span>
-
     HUMAN WHEN IT MATTERS
-
     <span class="dot">•</span>
-
     ALWAYS AVAILABLE
-
   </footer>
-
-
-
-  <script>
-
-    /*
-      Submit to Formspree without leaving the page.
-    */
-
-    const form =
-      document.getElementById('waitlist-form');
-
-    const successMsg =
-      document.getElementById('success-msg');
-
-
-    form.addEventListener(
-      'submit',
-      async function (e) {
-
-        /*
-          Stop the browser navigating to Formspree.
-        */
-
-        e.preventDefault();
-
-
-        /*
-          Collect the email address.
-        */
-
-        const formData =
-          new FormData(form);
-
-
-        try {
-
-          /*
-            Send exactly the same form data
-            to your existing Formspree endpoint.
-          */
-
-          const response =
-            await fetch(
-              form.action,
-              {
-                method: 'POST',
-
-                body: formData,
-
-                headers: {
-                  'Accept': 'application/json'
-                }
-              }
-            );
-
-
-          /*
-            Formspree accepted the submission.
-          */
-
-          if (response.ok) {
-
-            /*
-              Hide the form.
-            */
-
-            form.style.display = 'none';
-
-
-            /*
-              Display the success confirmation.
-
-              Because successMsg is OUTSIDE the form,
-              hiding the form will not hide this.
-            */
-
-            successMsg.classList.add('show');
-
-          }
-
-
-          /*
-            Formspree rejected the submission.
-          */
-
-          else {
-
-            alert(
-              'Something went wrong — please try again.'
-            );
-
-          }
-
-        }
-
-
-        /*
-          Network error / request could not complete.
-        */
-
-        catch (err) {
-
-          console.error(
-            'Formspree submission error:',
-            err
-          );
-
-          alert(
-            'Something went wrong — please try again.'
-          );
-
-        }
-
-      }
-    );
-
-  </script>
-
 
 </body>
 </html>
