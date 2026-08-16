@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tailyr — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0B0D10;
+    --panel: #14171B;
+    --ivory: #EDEAE3;
+    --muted: #83898F;
+    --muted-dim: #5B6066;
+    --brass: #B08D57;
+    --brass-bright: #D4AF7A;
+    --brass-dim: #6E5A3B;
+    --hairline: #24282D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ambient glow */
+  body::before {
+    content: "";
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(176,141,87,0.10) 0%, rgba(176,141,87,0) 65%);
+    pointer-events: none;
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift {
+    from { transform: translateX(-52%) translateY(0px); }
+    to { transform: translateX(-48%) translateY(30px); }
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--hairline);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brass);
+    box-shadow: 0 0 0 0 rgba(176,141,87,0.6);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(176,141,87,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(176,141,87,0); }
+    100% { box-shadow: 0 0 0 0 rgba(176,141,87,0); }
+  }
+
+  .wordmark-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.25s;
+  }
+
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(44px, 8vw, 68px);
+    color: var(--ivory);
+    margin-bottom: 20px;
+  }
+
+  .beta-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--brass-dim);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--brass);
+    font-weight: 400;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2.6vw, 23px);
+    color: var(--muted);
+    margin-bottom: 14px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .thesis {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 440px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.55s;
+  }
+
+  .thesis strong {
+    color: var(--ivory);
+    font-weight: 500;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .form-row {
+    display: flex;
+    width: 100%;
+    max-width: 440px;
+    border-bottom: 1px solid var(--hairline);
+    transition: border-color 0.4s ease;
+    position: relative;
+  }
+
+  .form-row::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; left: 50%;
+    width: 0%; height: 1px;
+    background: var(--brass);
+    transition: width 0.5s ease, left 0.5s ease;
+  }
+  .form-row:focus-within::after { width: 100%; left: 0%; }
+  .form-row:focus-within { border-color: transparent; }
+
+  input[type="email"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: var(--ivory);
+    padding: 14px 8px;
+    text-align: center;
+  }
+
+  input[type="email"]::placeholder {
+    color: var(--muted-dim);
+  }
+
+  .submit-btn {
+    background: none;
+    border: none;
+    color: var(--brass);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    padding: 14px 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.25s ease, transform 0.2s ease;
+  }
+  .submit-btn:hover { color: var(--brass-bright); transform: translateX(2px); }
+
+  .form-hint {
+    margin-top: 18px;
+    font-size: 11.5px;
+    letter-spacing: 0.03em;
+    color: var(--muted-dim);
+  }
+
+  .success-msg {
+    display: none;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--brass-bright);
+    margin-top: 8px;
+    padding: 18px 0;
+  }
+
+  .success-msg.show { display: block; animation: fadeUp 0.6s ease forwards; }
+
+  .verticals-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 54px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.85s;
+  }
+
+  .v-tag {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted-dim);
+    border: 1px solid var(--hairline);
+    padding: 7px 16px;
+    border-radius: 100px;
+  }
+
+  footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 60px;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+  footer .dot { color: var(--brass); margin: 0 8px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .form-row { flex-direction: column; gap: 4px; border-bottom: none; }
+    input[type="email"] { border-bottom: 1px solid var(--hairline); text-align: center; }
+    .submit-btn { align-self: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="content">
+    <div class="status-pill"><span class="pulse-dot"></span> In the making</div>
+
+    <div class="wordmark-row">
+      <div class="wordmark">Tailyr</div>
+      <div class="beta-badge">β</div>
+    </div>
+    <div class="tagline">Your needs, answered</div>
+
+    <p class="thesis">
+      One voice for everything worth owning — <strong>cars, watches, yachts, fine wine, travel.</strong>
+      No browsing. No forms. Just tell us what you're after, and we'll find who has it.
+      We're building it properly, and we'd love for you to be among the first through the door.
+    </p>
+
+    <form id="waitlist-form" action="https://formspree.io/f/mgawljnr" method="POST">
+      <div class="form-row">
+        <input type="email" id="email-input" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit" class="submit-btn">Request early access →</button>
+      </div>
+      <div class="form-hint">No spam. One email when we open the door.</div>
+      <div class="success-msg" id="success-msg">You're on the list. We'll be in touch soon.</div>
+    </form>
+
+    <div class="verticals-row">
+      <div class="v-tag">Cars</div>
+      <div class="v-tag">Watches</div>
+      <div class="v-tag">Yachts</div>
+      <div class="v-tag">Fine Wine</div>
+      <div class="v-tag">Travel</div>
+    </div>
+  </div>
+
+  <footer>
+    PRIVATE BY DESIGN <span class="dot">•</span> HUMAN WHEN IT MATTERS <span class="dot">•</span> ALWAYS AVAILABLE
+  </footer>
+
+  <script>
+    // Submits the email to Formspree, then shows the success message.
+    const form = document.getElementById('waitlist-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.classList.add('show');
+        } else {
+          alert('Something went wrong — please try again.');
+        }
+      } catch (err) {
+        alert('Something went wrong — please try again.');
+      }
+    });
+  </script>
+
+</body>
+</html>
