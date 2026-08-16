@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tailyr — Coming Soon</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
+
   :root {
     --ink: #0B0D10;
     --panel: #14171B;
@@ -19,7 +23,11 @@
     --hairline: #24282D;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   body {
     background: var(--ink);
@@ -36,7 +44,9 @@
     overflow: hidden;
   }
 
-  /* ambient glow */
+
+  /* Ambient glow */
+
   body::before {
     content: "";
     position: fixed;
@@ -45,24 +55,43 @@
     transform: translateX(-50%);
     width: 1400px;
     height: 1400px;
-    background: radial-gradient(circle, rgba(176,141,87,0.14) 0%, rgba(176,141,87,0) 60%);
+    background: radial-gradient(
+      circle,
+      rgba(176,141,87,0.14) 0%,
+      rgba(176,141,87,0) 60%
+    );
     pointer-events: none;
     animation: drift 12s ease-in-out infinite alternate;
   }
 
   @keyframes drift {
-    from { transform: translateX(-52%) translateY(0px); }
-    to { transform: translateX(-48%) translateY(30px); }
+    from {
+      transform: translateX(-52%) translateY(0px);
+    }
+
+    to {
+      transform: translateX(-48%) translateY(30px);
+    }
   }
+
+
+  /* Subtle texture */
 
   body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-image:
+      radial-gradient(
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px
+      );
     background-size: 3px 3px;
     pointer-events: none;
   }
+
+
+  /* Main content */
 
   .content {
     position: relative;
@@ -72,6 +101,9 @@
     flex-direction: column;
     align-items: center;
   }
+
+
+  /* Status */
 
   .status-pill {
     display: inline-flex;
@@ -85,6 +117,7 @@
     text-transform: uppercase;
     color: var(--muted);
     margin-bottom: 40px;
+
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.1s;
   }
@@ -99,15 +132,29 @@
   }
 
   @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(176,141,87,0.5); }
-    70% { box-shadow: 0 0 0 8px rgba(176,141,87,0); }
-    100% { box-shadow: 0 0 0 0 rgba(176,141,87,0); }
+
+    0% {
+      box-shadow: 0 0 0 0 rgba(176,141,87,0.5);
+    }
+
+    70% {
+      box-shadow: 0 0 0 8px rgba(176,141,87,0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(176,141,87,0);
+    }
+
   }
+
+
+  /* Logo */
 
   .wordmark-row {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.25s;
   }
@@ -124,37 +171,57 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     width: 46px;
     height: 46px;
+
     border-radius: 50%;
     border: 1px solid var(--brass-dim);
+
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-size: 22px;
+
     color: var(--brass);
     font-weight: 400;
+
     margin-top: 6px;
     flex-shrink: 0;
   }
+
+
+  /* Tagline */
 
   .tagline {
     font-family: 'Fraunces', serif;
     font-style: italic;
     font-weight: 300;
+
     font-size: clamp(20px, 3.2vw, 28px);
+
     color: var(--muted);
+
     margin-bottom: 14px;
+
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
   }
 
+
+  /* Main text */
+
   .thesis {
     font-size: 16.5px;
     line-height: 1.8;
+
     color: var(--muted);
+
     font-weight: 300;
+
     max-width: 520px;
+
     margin-bottom: 48px;
+
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.55s;
   }
@@ -164,44 +231,79 @@
     font-weight: 500;
   }
 
+
+  /* Form */
+
   form {
     width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.7s;
   }
 
   .form-row {
     display: flex;
+
     width: 100%;
     max-width: 440px;
+
     border-bottom: 1px solid var(--hairline);
+
     transition: border-color 0.4s ease;
+
     position: relative;
   }
 
   .form-row::after {
     content: "";
+
     position: absolute;
-    bottom: -1px; left: 50%;
-    width: 0%; height: 1px;
+
+    bottom: -1px;
+    left: 50%;
+
+    width: 0%;
+    height: 1px;
+
     background: var(--brass);
-    transition: width 0.5s ease, left 0.5s ease;
+
+    transition:
+      width 0.5s ease,
+      left 0.5s ease;
   }
-  .form-row:focus-within::after { width: 100%; left: 0%; }
-  .form-row:focus-within { border-color: transparent; }
+
+  .form-row:focus-within::after {
+    width: 100%;
+    left: 0%;
+  }
+
+  .form-row:focus-within {
+    border-color: transparent;
+  }
+
+
+  /* Email field */
 
   input[type="email"] {
     flex: 1;
+
     background: transparent;
+
     border: none;
     outline: none;
+
     font-family: 'Inter', sans-serif;
+
     font-size: 15px;
+
     color: var(--ivory);
+
     padding: 14px 8px;
+
     text-align: center;
   }
 
@@ -209,189 +311,452 @@
     color: var(--muted-dim);
   }
 
+
+  /* Submit */
+
   .submit-btn {
     background: none;
+
     border: none;
+
     color: var(--brass);
+
     font-size: 13px;
+
     letter-spacing: 0.06em;
+
     font-weight: 500;
+
     padding: 14px 6px;
+
     cursor: pointer;
+
     white-space: nowrap;
-    transition: color 0.25s ease, transform 0.2s ease;
+
+    transition:
+      color 0.25s ease,
+      transform 0.2s ease;
   }
-  .submit-btn:hover { color: var(--brass-bright); transform: translateX(2px); }
+
+  .submit-btn:hover {
+    color: var(--brass-bright);
+    transform: translateX(2px);
+  }
+
+
+  /* Hint */
 
   .form-hint {
     margin-top: 18px;
+
     font-size: 11.5px;
+
     letter-spacing: 0.03em;
+
     color: var(--muted-dim);
   }
 
+
+  /* Success message */
+
   .success-msg {
     display: none;
+
     font-family: 'Fraunces', serif;
+
     font-style: italic;
+
     font-size: 17px;
+
     color: var(--brass-bright);
+
     margin-top: 8px;
+
     padding: 18px 0;
   }
 
-  .success-msg.show { display: block; animation: fadeUp 0.6s ease forwards; }
+  .success-msg.show {
+    display: block;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+
+  /* Categories */
 
   .verticals-row {
     display: flex;
+
     flex-wrap: wrap;
+
     justify-content: center;
+
     gap: 10px;
+
     margin-top: 54px;
+
     opacity: 0;
+
     animation: fadeUp 0.8s ease forwards 0.85s;
   }
 
   .v-tag {
     font-size: 11px;
+
     letter-spacing: 0.04em;
+
     color: var(--muted-dim);
+
     border: 1px solid var(--hairline);
+
     padding: 7px 16px;
+
     border-radius: 100px;
   }
 
+
+  /* Footer */
+
   footer {
     position: relative;
+
     z-index: 2;
+
     margin-top: 60px;
+
     font-size: 10.5px;
+
     letter-spacing: 0.08em;
+
     color: var(--muted);
+
     opacity: 0.5;
   }
-  footer .dot { color: var(--brass); margin: 0 8px; }
+
+  footer .dot {
+    color: var(--brass);
+    margin: 0 8px;
+  }
+
+
+  /* Animations */
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to { opacity: 1; transform: translateY(0); }
+
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   }
+
+
+  /* Mobile */
 
   @media (max-width: 480px) {
-    .form-row { flex-direction: column; gap: 4px; border-bottom: none; }
-    input[type="email"] { border-bottom: 1px solid var(--hairline); text-align: center; }
-    .submit-btn { align-self: center; }
+
+    .form-row {
+      flex-direction: column;
+      gap: 4px;
+      border-bottom: none;
+    }
+
+    input[type="email"] {
+      border-bottom: 1px solid var(--hairline);
+      text-align: center;
+    }
+
+    .submit-btn {
+      align-self: center;
+    }
+
   }
+
+
+  /* Reduced motion */
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
   }
+
 </style>
 </head>
+
+
 <body>
 
+
   <div class="content">
-    <div class="status-pill"><span class="pulse-dot"></span> In the making</div>
+
+
+    <div class="status-pill">
+      <span class="pulse-dot"></span>
+      In the making
+    </div>
+
 
     <div class="wordmark-row">
-      <div class="wordmark">Tailyr</div>
-      <div class="beta-badge">β</div>
+
+      <div class="wordmark">
+        Tailyr
+      </div>
+
+      <div class="beta-badge">
+        β
+      </div>
+
     </div>
-    <div class="tagline">Your needs, answered</div>
+
+
+    <div class="tagline">
+      Your needs, answered
+    </div>
+
 
     <p class="thesis">
-      One voice for everything worth owning — <strong>cars, watches, yachts, fine wine, travel.</strong>
-      No browsing. No forms. Just tell us what you're after, and we'll find who has it.
+
+      One voice for everything worth owning —
+      <strong>
+        cars, watches, yachts, fine wine, travel.
+      </strong>
+
+      No browsing. No forms.
+
+      Just tell us what you're after, and we'll find who has it.
+
       We're building it properly, and we'd love for you to be among the first through the door.
+
     </p>
 
-    <form id="waitlist-form" action="https://formspree.io/f/mgawljnr" method="POST">
+
+
+    <!-- WAITLIST FORM -->
+
+    <form
+      id="waitlist-form"
+      action="https://formspree.io/f/mgawljnr"
+      method="POST"
+    >
+
       <div class="form-row">
-        <input type="email" id="email-input" name="email" placeholder="you@example.com" required autocomplete="email">
-        <button type="submit" class="submit-btn">Request early access →</button>
+
+        <input
+          type="email"
+          id="email-input"
+          name="email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        >
+
+        <button
+          type="submit"
+          class="submit-btn"
+        >
+          Request early access →
+        </button>
+
       </div>
-      <div class="form-hint">No spam. One email when we open the door.</div>
+
+
+      <div class="form-hint">
+        No spam. One email when we open the door.
+      </div>
+
     </form>
-    <div class="success-msg" id="success-msg">You're on the list. We'll be in touch soon.</div>
+
+
+    <!--
+      IMPORTANT:
+      This must remain OUTSIDE the form.
+
+      The JavaScript hides the form after Formspree
+      confirms a successful submission. If this element
+      were inside the form, it would be hidden too.
+    -->
+
+    <div
+      class="success-msg"
+      id="success-msg"
+    >
+      You're on the list. We'll be in touch soon.
+    </div>
+
+
 
     <div class="verticals-row">
-      <div class="v-tag">Cars</div>
-      <div class="v-tag">Watches</div>
-      <div class="v-tag">Yachts</div>
-      <div class="v-tag">Fine Wine</div>
-      <div class="v-tag">Travel</div>
+
+      <div class="v-tag">
+        Cars
+      </div>
+
+      <div class="v-tag">
+        Watches
+      </div>
+
+      <div class="v-tag">
+        Yachts
+      </div>
+
+      <div class="v-tag">
+        Fine Wine
+      </div>
+
+      <div class="v-tag">
+        Travel
+      </div>
+
     </div>
+
+
   </div>
 
+
+
   <footer>
-    PRIVATE BY DESIGN <span class="dot">•</span> HUMAN WHEN IT MATTERS <span class="dot">•</span> ALWAYS AVAILABLE
+
+    PRIVATE BY DESIGN
+
+    <span class="dot">•</span>
+
+    HUMAN WHEN IT MATTERS
+
+    <span class="dot">•</span>
+
+    ALWAYS AVAILABLE
+
   </footer>
 
+
+
   <script>
-  // Submit the email to Formspree and show success/error feedback.
-  const form = document.getElementById('waitlist-form');
-  const successMsg = document.getElementById('success-msg');
 
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
+    /*
+      Submit to Formspree without leaving the page.
+    */
 
-    const submitBtn = form.querySelector('.submit-btn');
-    const formData = new FormData(form);
+    const form =
+      document.getElementById('waitlist-form');
 
-    // Prevent double submissions
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    const successMsg =
+      document.getElementById('success-msg');
 
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+
+    form.addEventListener(
+      'submit',
+      async function (e) {
+
+        /*
+          Stop the browser navigating to Formspree.
+        */
+
+        e.preventDefault();
+
+
+        /*
+          Collect the email address.
+        */
+
+        const formData =
+          new FormData(form);
+
+
+        try {
+
+          /*
+            Send exactly the same form data
+            to your existing Formspree endpoint.
+          */
+
+          const response =
+            await fetch(
+              form.action,
+              {
+                method: 'POST',
+
+                body: formData,
+
+                headers: {
+                  'Accept': 'application/json'
+                }
+              }
+            );
+
+
+          /*
+            Formspree accepted the submission.
+          */
+
+          if (response.ok) {
+
+            /*
+              Hide the form.
+            */
+
+            form.style.display = 'none';
+
+
+            /*
+              Display the success confirmation.
+
+              Because successMsg is OUTSIDE the form,
+              hiding the form will not hide this.
+            */
+
+            successMsg.classList.add('show');
+
+          }
+
+
+          /*
+            Formspree rejected the submission.
+          */
+
+          else {
+
+            alert(
+              'Something went wrong — please try again.'
+            );
+
+          }
+
         }
-      });
 
-      const data = await response.json();
 
-      // Helpful while testing
-      console.log('Formspree status:', response.status);
-      console.log('Formspree response:', data);
+        /*
+          Network error / request could not complete.
+        */
 
-      if (response.ok) {
-        // Clear the form
-        form.reset();
+        catch (err) {
 
-        // Hide the form and show your success message
-        form.style.display = 'none';
-        successMsg.classList.add('show');
+          console.error(
+            'Formspree submission error:',
+            err
+          );
 
-      } else {
-        // Show the actual error returned by Formspree
-        const errorMessage =
-          data.errors?.map(error => error.message).join(', ') ||
-          'Something went wrong — please try again.';
+          alert(
+            'Something went wrong — please try again.'
+          );
 
-        console.error('Formspree error:', errorMessage);
-        alert(errorMessage);
+        }
 
-        // Re-enable the button
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Request early access →';
       }
+    );
 
-    } catch (error) {
-      console.error('Form submission error:', error);
+  </script>
 
-      alert(
-        'Unable to submit right now. Please check your connection and try again.'
-      );
-
-      // Re-enable the button
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Request early access →';
-    }
-  });
-</script>
 
 </body>
 </html>
