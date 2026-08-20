@@ -3,28 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tailyr — Your needs, answered</title>
+<meta name="description" content="Tailyr is a private way to source what you're after — cars, watches, yachts, fine wine, and travel. No browsing, no forms. Tell us what you want, and we'll find who has it. Coming soon.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tailyr-coming-soon.vercel.app/">
 
-<title>Tailyr — Coming Soon</title>
+<!-- Open Graph / social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tailyr — Your needs, answered">
+<meta property="og:description" content="A private way to source cars, watches, yachts, fine wine and travel. No browsing, no forms — just tell us what you're after.">
+<meta property="og:url" content="https://tailyr-coming-soon.vercel.app/">
+<meta property="og:site_name" content="Tailyr">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FL2W1LG5RJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-
-  gtag('js', new Date());
-
-  gtag('config', 'G-FL2W1LG5RJ');
-</script>
+<!-- Twitter card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tailyr — Your needs, answered">
+<meta name="twitter:description" content="A private way to source cars, watches, yachts, fine wine and travel. No browsing, no forms — just tell us what you're after.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<style>
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Tailyr",
+  "description": "A private way to source cars, watches, yachts, fine wine and travel — connecting people directly with trusted specialists.",
+  "slogan": "Your needs, answered"
+}
+</script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FL2W1LG5RJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FL2W1LG5RJ');
+</script>
+<style>
   :root {
     --ink: #0B0D10;
     --panel: #14171B;
@@ -37,11 +55,7 @@
     --hairline: #24282D;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: var(--ink);
@@ -58,8 +72,7 @@
     overflow: hidden;
   }
 
-  /* Ambient glow */
-
+  /* ambient glow */
   body::before {
     content: "";
     position: fixed;
@@ -68,40 +81,24 @@
     transform: translateX(-50%);
     width: 1400px;
     height: 1400px;
-    background: radial-gradient(
-      circle,
-      rgba(176,141,87,0.14) 0%,
-      rgba(176,141,87,0) 60%
-    );
+    background: radial-gradient(circle, rgba(176,141,87,0.14) 0%, rgba(176,141,87,0) 60%);
     pointer-events: none;
     animation: drift 12s ease-in-out infinite alternate;
   }
 
   @keyframes drift {
-    from {
-      transform: translateX(-52%) translateY(0px);
-    }
-
-    to {
-      transform: translateX(-48%) translateY(30px);
-    }
+    from { transform: translateX(-52%) translateY(0px); }
+    to { transform: translateX(-48%) translateY(30px); }
   }
-
-  /* Subtle texture */
 
   body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(
-      rgba(255,255,255,0.015) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
     background-size: 3px 3px;
     pointer-events: none;
   }
-
-  /* Main content */
 
   .content {
     position: relative;
@@ -111,8 +108,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-  /* Status */
 
   .status-pill {
     display: inline-flex;
@@ -140,20 +135,10 @@
   }
 
   @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(176,141,87,0.5);
-    }
-
-    70% {
-      box-shadow: 0 0 0 8px rgba(176,141,87,0);
-    }
-
-    100% {
-      box-shadow: 0 0 0 0 rgba(176,141,87,0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(176,141,87,0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(176,141,87,0); }
+    100% { box-shadow: 0 0 0 0 rgba(176,141,87,0); }
   }
-
-  /* Wordmark */
 
   .wordmark-row {
     display: flex;
@@ -188,8 +173,6 @@
     flex-shrink: 0;
   }
 
-  /* Tagline */
-
   .tagline {
     font-family: 'Fraunces', serif;
     font-style: italic;
@@ -200,8 +183,6 @@
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.4s;
   }
-
-  /* Main copy */
 
   .thesis {
     font-size: 16.5px;
@@ -218,8 +199,6 @@
     color: var(--ivory);
     font-weight: 500;
   }
-
-  /* Form */
 
   form {
     width: 100%;
@@ -242,24 +221,13 @@
   .form-row::after {
     content: "";
     position: absolute;
-    bottom: -1px;
-    left: 50%;
-    width: 0%;
-    height: 1px;
+    bottom: -1px; left: 50%;
+    width: 0%; height: 1px;
     background: var(--brass);
     transition: width 0.5s ease, left 0.5s ease;
   }
-
-  .form-row:focus-within::after {
-    width: 100%;
-    left: 0%;
-  }
-
-  .form-row:focus-within {
-    border-color: transparent;
-  }
-
-  /* Email input */
+  .form-row:focus-within::after { width: 100%; left: 0%; }
+  .form-row:focus-within { border-color: transparent; }
 
   input[type="email"] {
     flex: 1;
@@ -277,8 +245,6 @@
     color: var(--muted-dim);
   }
 
-  /* Submit button */
-
   .submit-btn {
     background: none;
     border: none;
@@ -291,13 +257,7 @@
     white-space: nowrap;
     transition: color 0.25s ease, transform 0.2s ease;
   }
-
-  .submit-btn:hover {
-    color: var(--brass-bright);
-    transform: translateX(2px);
-  }
-
-  /* Form hint */
+  .submit-btn:hover { color: var(--brass-bright); transform: translateX(2px); }
 
   .form-hint {
     margin-top: 18px;
@@ -306,7 +266,17 @@
     color: var(--muted-dim);
   }
 
-  /* Categories */
+  .success-msg {
+    display: none;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--brass-bright);
+    margin-top: 8px;
+    padding: 18px 0;
+  }
+
+  .success-msg.show { display: block; animation: fadeUp 0.6s ease forwards; }
 
   .verticals-row {
     display: flex;
@@ -327,8 +297,6 @@
     border-radius: 100px;
   }
 
-  /* Footer */
-
   footer {
     position: relative;
     z-index: 2;
@@ -338,119 +306,49 @@
     color: var(--muted);
     opacity: 0.5;
   }
-
-  footer .dot {
-    color: var(--brass);
-    margin: 0 8px;
-  }
-
-  /* Animation */
+  footer .dot { color: var(--brass); margin: 0 8px; }
 
   @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-
-  /* Mobile */
 
   @media (max-width: 480px) {
-
-    .form-row {
-      flex-direction: column;
-      gap: 4px;
-      border-bottom: none;
-    }
-
-    input[type="email"] {
-      border-bottom: 1px solid var(--hairline);
-      text-align: center;
-    }
-
-    .submit-btn {
-      align-self: center;
-    }
+    .form-row { flex-direction: column; gap: 4px; border-bottom: none; }
+    input[type="email"] { border-bottom: 1px solid var(--hairline); text-align: center; }
+    .submit-btn { align-self: center; }
   }
-
-  /* Reduced motion */
 
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
+    *, *::before, *::after { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
-
 </style>
 </head>
-
 <body>
 
   <div class="content">
-
-    <div class="status-pill">
-      <span class="pulse-dot"></span>
-      In the making
-    </div>
+    <div class="status-pill"><span class="pulse-dot"></span> <span id="counter-num">312</span> already waiting</div>
 
     <div class="wordmark-row">
-      <div class="wordmark">Tailyr</div>
+      <h1 class="wordmark">Tailyr</h1>
       <div class="beta-badge">β</div>
     </div>
-
-    <div class="tagline">
-      Your needs, answered
-    </div>
+    <div class="tagline">Your needs, answered</div>
 
     <p class="thesis">
-      One voice for everything worth owning —
-      <strong>cars, watches, yachts, fine wine, travel.</strong>
+      One voice for everything worth owning — <strong>cars, watches, yachts, fine wine, travel.</strong>
       No browsing. No forms. Just tell us what you're after, and we'll find who has it.
       We're building it properly, and we'd love for you to be among the first through the door.
     </p>
 
-
-    <!-- WAITLIST FORM -->
-
-    <form
-      action="https://formspree.io/f/mgawljnr"
-      method="POST"
-    >
-
+    <form id="waitlist-form" action="https://formspree.io/f/mgawljnr" method="POST">
       <div class="form-row">
-
-        <input
-          type="email"
-          name="email"
-          placeholder="you@example.com"
-          required
-          autocomplete="email"
-        >
-
-        <button
-          type="submit"
-          class="submit-btn"
-        >
-          Request early access →
-        </button>
-
+        <input type="email" id="email-input" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit" class="submit-btn">Request early access →</button>
       </div>
-
-      <div class="form-hint">
-        No spam. One email when we open the door.
-      </div>
-
+      <div class="form-hint">No spam. One email when we open the door.</div>
     </form>
-
+    <div class="success-msg" id="success-msg">You're on the list. We'll be in touch soon.</div>
 
     <div class="verticals-row">
       <div class="v-tag">Cars</div>
@@ -459,17 +357,93 @@
       <div class="v-tag">Fine Wine</div>
       <div class="v-tag">Travel</div>
     </div>
-
   </div>
 
-
   <footer>
-    PRIVATE BY DESIGN
-    <span class="dot">•</span>
-    HUMAN WHEN IT MATTERS
-    <span class="dot">•</span>
-    ALWAYS AVAILABLE
+    PRIVATE BY DESIGN <span class="dot">•</span> HUMAN WHEN IT MATTERS <span class="dot">•</span> ALWAYS AVAILABLE
   </footer>
+
+  <script>
+    // Submits the email to Formspree, then shows the success message.
+    const form = document.getElementById('waitlist-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.style.display = 'none';
+          successMsg.classList.add('show');
+        } else {
+          alert('Something went wrong — please try again.');
+        }
+      } catch (err) {
+        alert('Something went wrong — please try again.');
+      }
+    });
+  </script>
+
+  <script type="module">
+    // Real, shared waitlist counter backed by Firebase Firestore.
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {
+      getFirestore, doc, onSnapshot, runTransaction
+    } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAt8UROMgPT_zPdgWQXkiNU_pfWAvfQNWM",
+      authDomain: "tailyr.firebaseapp.com",
+      projectId: "tailyr",
+      storageBucket: "tailyr.firebasestorage.app",
+      messagingSenderId: "269530726803",
+      appId: "1:269530726803:web:eba489e6babd55bca3e866",
+      measurementId: "G-LKGM1MCKWW"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const counterRef = doc(db, "stats", "waitlist");
+    const counterEl = document.getElementById('counter-num');
+
+    // Live-read: every visitor's badge updates instantly whenever the
+    // shared number changes, from any visitor, anywhere.
+    // Number(...) here means this works even if the Firestore field
+    // was accidentally saved as a string rather than a number.
+    onSnapshot(counterRef, (snap) => {
+      if (snap.exists()) {
+        counterEl.textContent = Number(snap.data().count);
+      }
+    });
+
+    // Occasionally, this visitor's browser nudges the shared count up by
+    // 1-6 (matches the Firestore security rule range). Only one random
+    // visitor needs to do this every so often to keep the number moving
+    // for everyone watching live.
+    function scheduleNextTick() {
+      const delay = (60 + Math.random() * 120) * 1000; // 1-3 minutes
+      setTimeout(async () => {
+        const bump = Math.floor(Math.random() * 6) + 1; // 1-6
+        try {
+          await runTransaction(db, async (transaction) => {
+            const snap = await transaction.get(counterRef);
+            const current = Number(snap.data().count); // coerce string -> number
+            transaction.update(counterRef, { count: current + bump }); // always writes back as a real number
+          });
+        } catch (err) {
+          console.error("Counter update failed:", err);
+        }
+        scheduleNextTick();
+      }, delay);
+    }
+
+    scheduleNextTick();
+  </script>
 
 </body>
 </html>
